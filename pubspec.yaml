@@ -1,0 +1,22 @@
+name: flutter_glass
+description: A premium glassmorphism UI toolkit for Flutter. Beautiful frosted glass effects, aurora backgrounds, morphing animations, and ready-to-use glass widgets.
+version: 1.0.0
+homepage: https://github.com/muhittincamdali/FlutterGlass
+repository: https://github.com/muhittincamdali/FlutterGlass
+issue_tracker: https://github.com/muhittincamdali/FlutterGlass/issues
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+  flutter: '>=3.16.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
