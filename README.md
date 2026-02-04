@@ -9,28 +9,65 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Flutter-3.24-blue.svg" alt="Flutter"/>
-  <img src="https://img.shields.io/badge/Dart-3.5-blue.svg" alt="Dart"/>
+  <a href="https://github.com/muhittincamdali/FlutterGlass/actions/workflows/ci.yml">
+    <img src="https://github.com/muhittincamdali/FlutterGlass/actions/workflows/ci.yml/badge.svg" alt="CI"/>
+  </a>
+  <a href="https://pub.dev/packages/flutter_glass">
+    <img src="https://img.shields.io/badge/pub.dev-flutter__glass-blue?style=flat-square&logo=dart" alt="pub.dev"/>
+  </a>
+  <img src="https://img.shields.io/badge/Flutter-3.24-02569B?style=flat-square&logo=flutter&logoColor=white" alt="Flutter 3.24"/>
+  <img src="https://img.shields.io/badge/Dart-3.5-0175C2?style=flat-square&logo=dart&logoColor=white" alt="Dart 3.5"/>
+  <img src="https://img.shields.io/badge/Platform-iOS%20%7C%20Android%20%7C%20Web-lightgrey?style=flat-square" alt="Platform"/>
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"/>
 </p>
+
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#quick-start">Quick Start</a> •
+  <a href="#components">Components</a> •
+  <a href="#contributing">Contributing</a>
+</p>
+
+---
+
+## 📋 Table of Contents
+
+- [Why FlutterGlass?](#why-flutterglass)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Components](#components)
+  - [GlassCard](#glasscard)
+  - [GlassButton](#glassbutton)
+  - [GlassNavBar](#glassnavbar)
+  - [AuroraBackground](#aurorabackground)
+  - [MeshGradient](#meshgradient)
+- [Customization](#customization)
+- [Performance](#performance)
+- [Contributing](#contributing)
+- [License](#license)
+- [Star History](#-star-history)
 
 ---
 
 ## Why FlutterGlass?
 
-Glassmorphism is beautiful but hard to implement correctly. **FlutterGlass** provides production-ready glass effects with performance optimizations.
+Glassmorphism is beautiful but hard to implement correctly. **FlutterGlass** provides production-ready glass effects with performance optimizations and consistent look across platforms.
 
 ```dart
-// Frosted glass card
+// Frosted glass card in seconds
 GlassCard(
   blur: 10,
   opacity: 0.2,
   child: Text('Beautiful glass effect'),
 )
 
-// Aurora background
+// Stunning aurora background
 AuroraBackground(
   colors: [Colors.purple, Colors.blue, Colors.teal],
-  child: content,
+  child: YourContent(),
 )
 ```
 
@@ -38,12 +75,77 @@ AuroraBackground(
 
 | Feature | Description |
 |---------|-------------|
-| 🧊 **Glass Effects** | Blur, frost, tint |
+| 🧊 **Glass Effects** | Blur, frost, tint with GPU acceleration |
 | 🌈 **Aurora** | Animated gradient backgrounds |
 | ✨ **Glow** | Neon and soft glows |
 | 🎨 **Gradients** | Mesh and radial gradients |
-| 📱 **Adaptive** | iOS/Android optimized |
-| ⚡ **Performant** | GPU-accelerated |
+| 📱 **Adaptive** | iOS/Android/Web optimized |
+| ⚡ **Performant** | GPU-accelerated rendering |
+| 🎯 **Customizable** | Every property configurable |
+| 🧪 **Tested** | Comprehensive test coverage |
+
+## Requirements
+
+| Requirement | Version |
+|-------------|---------|
+| Flutter | 3.24+ |
+| Dart | 3.5+ |
+| iOS | 12.0+ |
+| Android | API 21+ |
+
+## Installation
+
+### pub.dev
+
+```yaml
+dependencies:
+  flutter_glass: ^1.0.0
+```
+
+Then run:
+
+```bash
+flutter pub get
+```
+
+### Git
+
+```yaml
+dependencies:
+  flutter_glass:
+    git:
+      url: https://github.com/muhittincamdali/FlutterGlass.git
+      ref: main
+```
+
+## Quick Start
+
+```dart
+import 'package:flutter_glass/flutter_glass.dart';
+
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AuroraBackground(
+      colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
+      child: Center(
+        child: GlassCard(
+          blur: 10,
+          opacity: 0.2,
+          borderRadius: 20,
+          child: Padding(
+            padding: EdgeInsets.all(24),
+            child: Text(
+              'Hello Glass!',
+              style: TextStyle(color: Colors.white, fontSize: 24),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
 
 ## Components
 
@@ -69,7 +171,7 @@ GlassCard(
 
 ```dart
 GlassButton(
-  onPressed: () {},
+  onPressed: () => print('Pressed!'),
   blur: 5,
   child: Text('Press Me'),
 )
@@ -82,10 +184,10 @@ GlassNavBar(
   items: [
     GlassNavItem(icon: Icons.home, label: 'Home'),
     GlassNavItem(icon: Icons.search, label: 'Search'),
-    GlassNavItem(icon: Icons.profile, label: 'Profile'),
+    GlassNavItem(icon: Icons.person, label: 'Profile'),
   ],
   currentIndex: 0,
-  onTap: (index) {},
+  onTap: (index) => setState(() => _currentIndex = index),
 )
 ```
 
@@ -101,7 +203,7 @@ AuroraBackground(
   speed: 0.5,
   child: Scaffold(
     backgroundColor: Colors.transparent,
-    body: content,
+    body: YourContent(),
   ),
 )
 ```
@@ -114,7 +216,7 @@ MeshGradient(
     [Colors.red, Colors.orange],
     [Colors.purple, Colors.blue],
   ],
-  child: content,
+  child: YourContent(),
 )
 ```
 
@@ -122,16 +224,16 @@ MeshGradient(
 
 ```dart
 GlassCard(
-  // Blur intensity
+  // Blur intensity (0-50)
   blur: 15,
   
-  // Background opacity
+  // Background opacity (0-1)
   opacity: 0.1,
   
   // Tint color
   tint: Colors.blue,
   
-  // Border
+  // Border styling
   border: GlassBorder(
     width: 2,
     gradient: LinearGradient(
@@ -144,31 +246,45 @@ GlassCard(
     color: Colors.black26,
     blurRadius: 20,
   ),
+  
+  child: YourContent(),
 )
 ```
 
 ## Performance
 
 ```dart
-// Enable caching for static glass
+// Enable caching for static glass elements
 GlassCard(
   cacheExtent: true,
-  child: staticContent,
+  child: StaticContent(),
 )
 
-// Reduce blur for low-end devices
+// Reduce blur on low-end devices
 GlassCard(
   blur: Platform.isAndroid ? 5 : 10,
+  child: Content(),
+)
+
+// Use RepaintBoundary for complex layouts
+RepaintBoundary(
+  child: GlassCard(...),
 )
 ```
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-MIT License
+FlutterGlass is released under the MIT License. See [LICENSE](LICENSE) for details.
 
 ---
 
@@ -181,3 +297,9 @@ MIT License
    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=muhittincamdali/FlutterGlass&type=Date" />
  </picture>
 </a>
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/muhittincamdali">Muhittin Camdali</a>
+</p>
