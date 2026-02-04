@@ -1,55 +1,171 @@
-<div align="center">
+<p align="center">
+  <img src="assets/logo.png" alt="FlutterGlass" width="200"/>
+</p>
 
-# 🧊 FlutterGlass
+<h1 align="center">FlutterGlass</h1>
 
-**Premium glassmorphism & aurora UI kit for Flutter**
+<p align="center">
+  <strong>🧊 Premium glassmorphism & aurora UI kit for Flutter</strong>
+</p>
 
-[![Dart](https://img.shields.io/badge/Dart-3.0+-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
-[![Flutter](https://img.shields.io/badge/Flutter-3.16+-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
-[![pub.dev](https://img.shields.io/badge/pub.dev-Package-blue?style=for-the-badge)](https://pub.dev)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-
-</div>
-
----
-
-## ✨ Features
-
-- 🧊 **Glassmorphism** — Frosted glass effects
-- 🌈 **Aurora** — Animated gradient backgrounds
-- 📦 **30+ Widgets** — Cards, buttons, inputs
-- 🎨 **Customizable** — Full control over blur/opacity
-- ⚡ **Performance** — Optimized for mobile
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-3.24-blue.svg" alt="Flutter"/>
+  <img src="https://img.shields.io/badge/Dart-3.5-blue.svg" alt="Dart"/>
+</p>
 
 ---
 
-## 🚀 Quick Start
+## Why FlutterGlass?
+
+Glassmorphism is beautiful but hard to implement correctly. **FlutterGlass** provides production-ready glass effects with performance optimizations.
 
 ```dart
-import 'package:flutter_glass/flutter_glass.dart';
-
-// Glass card
+// Frosted glass card
 GlassCard(
   blur: 10,
   opacity: 0.2,
-  child: Text('Hello'),
+  child: Text('Beautiful glass effect'),
 )
 
 // Aurora background
 AuroraBackground(
-  colors: [Colors.purple, Colors.blue, Colors.cyan],
-  child: YourContent(),
-)
-
-// Glass button
-GlassButton(
-  onPressed: () {},
-  child: Text('Tap Me'),
+  colors: [Colors.purple, Colors.blue, Colors.teal],
+  child: content,
 )
 ```
 
----
+## Features
 
-## 📄 License
+| Feature | Description |
+|---------|-------------|
+| 🧊 **Glass Effects** | Blur, frost, tint |
+| 🌈 **Aurora** | Animated gradient backgrounds |
+| ✨ **Glow** | Neon and soft glows |
+| 🎨 **Gradients** | Mesh and radial gradients |
+| 📱 **Adaptive** | iOS/Android optimized |
+| ⚡ **Performant** | GPU-accelerated |
 
-MIT • [@muhittincamdali](https://github.com/muhittincamdali)
+## Components
+
+### GlassCard
+
+```dart
+GlassCard(
+  blur: 10,
+  opacity: 0.2,
+  borderRadius: 20,
+  border: GlassBorder(
+    width: 1,
+    color: Colors.white.withOpacity(0.3),
+  ),
+  child: Padding(
+    padding: EdgeInsets.all(20),
+    child: Text('Glass Card'),
+  ),
+)
+```
+
+### GlassButton
+
+```dart
+GlassButton(
+  onPressed: () {},
+  blur: 5,
+  child: Text('Press Me'),
+)
+```
+
+### GlassNavBar
+
+```dart
+GlassNavBar(
+  items: [
+    GlassNavItem(icon: Icons.home, label: 'Home'),
+    GlassNavItem(icon: Icons.search, label: 'Search'),
+    GlassNavItem(icon: Icons.profile, label: 'Profile'),
+  ],
+  currentIndex: 0,
+  onTap: (index) {},
+)
+```
+
+### AuroraBackground
+
+```dart
+AuroraBackground(
+  colors: [
+    Color(0xFF667EEA),
+    Color(0xFF764BA2),
+    Color(0xFFF093FB),
+  ],
+  speed: 0.5,
+  child: Scaffold(
+    backgroundColor: Colors.transparent,
+    body: content,
+  ),
+)
+```
+
+### MeshGradient
+
+```dart
+MeshGradient(
+  colors: [
+    [Colors.red, Colors.orange],
+    [Colors.purple, Colors.blue],
+  ],
+  child: content,
+)
+```
+
+## Customization
+
+```dart
+GlassCard(
+  // Blur intensity
+  blur: 15,
+  
+  // Background opacity
+  opacity: 0.1,
+  
+  // Tint color
+  tint: Colors.blue,
+  
+  // Border
+  border: GlassBorder(
+    width: 2,
+    gradient: LinearGradient(
+      colors: [Colors.white54, Colors.white10],
+    ),
+  ),
+  
+  // Shadow
+  shadow: GlassShadow(
+    color: Colors.black26,
+    blurRadius: 20,
+  ),
+)
+```
+
+## Performance
+
+```dart
+// Enable caching for static glass
+GlassCard(
+  cacheExtent: true,
+  child: staticContent,
+)
+
+// Reduce blur for low-end devices
+GlassCard(
+  blur: Platform.isAndroid ? 5 : 10,
+)
+```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+MIT License
