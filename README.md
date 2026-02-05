@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/logo.png" alt="FlutterGlass" width="200"/>
-</p>
-
 <h1 align="center">FlutterGlass</h1>
 
 <p align="center">
