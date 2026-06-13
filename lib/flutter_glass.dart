@@ -11,6 +11,7 @@ export 'src/core/glass_theme.dart';
 export 'src/effects/frosted_glass.dart';
 export 'src/effects/blur_layer.dart';
 export 'src/effects/aurora_background.dart';
+export 'src/liquid_glass.dart';
 
 // Widgets
 export 'src/widgets/glass_card.dart';
