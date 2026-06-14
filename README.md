@@ -15,6 +15,10 @@
 
 <h1 align="center">FlutterGlass</h1>
 
+## 🚀 Killer Feature: Native iOS Material Bridge
+Flutter's `BackdropFilter` is expensive and inaccurate on iOS. FlutterGlass bypasses it entirely by bridging directly to a native `UIVisualEffectView` (`.ultraThinMaterial`), achieving pixel-perfect Apple aesthetics with zero performance compromise.
+
+
 <p align="center">
   <strong>🧊 Premium glassmorphism & aurora UI kit for Flutter</strong>
 </p>
