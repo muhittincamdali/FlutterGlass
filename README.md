@@ -15,6 +15,9 @@
 
 <h1 align="center">FlutterGlass</h1>
 
+## 🚀 Killer Feature: Custom Fragment Shaders
+We bypass Flutter's standard `BackdropFilter` limitations. FlutterGlass includes custom `.frag` programs compiled for Impeller, delivering native-quality chromatic aberration and blur directly on the GPU.
+
 ## 🚀 Killer Feature: Native iOS Material Bridge
 Flutter's `BackdropFilter` is expensive and inaccurate on iOS. FlutterGlass bypasses it entirely by bridging directly to a native `UIVisualEffectView` (`.ultraThinMaterial`), achieving pixel-perfect Apple aesthetics with zero performance compromise.
 
