@@ -128,6 +128,18 @@ void main() {
       );
     });
 
+    test('the shadow painter draws at most maxShadows shadows', () {
+      final many = GlassShadowPainter(
+        shadows: List.filled(50, const BoxShadow(blurRadius: 2)),
+        radius: radius,
+        corners: GlassCorners.circular,
+      );
+      expect(
+        (Canvas canvas) => many.paint(canvas, bounds.size),
+        paintsExactlyCountTimes(#drawPath, GlassStyle.maxShadows),
+      );
+    });
+
     test('nothing is drawn for an empty size', () {
       expect((Canvas canvas) => fill.paint(canvas, Size.zero), paintsNothing);
       expect((Canvas canvas) => shadow.paint(canvas, Size.zero), paintsNothing);

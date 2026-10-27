@@ -65,7 +65,7 @@ class GlassShadowPainter extends CustomPainter {
     canvas
       ..save()
       ..clipPath(glassShadowClip(bounds, shape));
-    for (final shadow in shadows) {
+    for (final shadow in shadows.take(GlassStyle.maxShadows)) {
       final rect = bounds.shift(shadow.offset).inflate(shadow.spreadRadius);
       if (rect.isEmpty) {
         continue;
