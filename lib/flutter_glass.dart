@@ -1,0 +1,9 @@
+/// Glass surfaces for Flutter: blurred, tinted, rim-lit panels, buttons and
+/// bars that stay readable, follow the platform's accessibility settings and
+/// share one backdrop read per screen.
+///
+/// Start with [GlassSurface]; style it with [GlassStyle] and theme it with
+/// [GlassThemeData] or [GlassTheme].
+library;
+
+export 'src/style/glass_style.dart';
