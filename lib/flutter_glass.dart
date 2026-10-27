@@ -4,6 +4,10 @@
 ///
 /// Start with [GlassSurface]; style it with [GlassStyle] and theme it with
 /// [GlassThemeData] or [GlassTheme].
+///
+/// {@category getting-started}
+/// {@category accessibility}
+/// {@category performance}
 library;
 
 export 'src/contrast/glass_contrast.dart';
