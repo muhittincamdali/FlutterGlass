@@ -36,6 +36,25 @@ jobs:
       - name: Build with dart doc
         run: dart doc --output "$RUNNER_TEMP/site"
 
+      # dart doc embeds the README, whose images use repository-relative paths
+      # (docs/screenshots/*.png). Those files are not part of the generated
+      # site, so copy them to the same relative location under the site root.
+      - name: Copy README screenshots into the site
+        run: |
+          mkdir -p "$RUNNER_TEMP/site/docs"
+          cp -R docs/screenshots "$RUNNER_TEMP/site/docs/screenshots"
+
+      - name: Check that every README screenshot resolves in the site
+        run: |
+          missing=0
+          for path in $(grep -o 'src="docs/screenshots/[^"]*"' "$RUNNER_TEMP/site/index.html" | sed 's/^src="//; s/"$//'); do
+            if [ ! -f "$RUNNER_TEMP/site/$path" ]; then
+              echo "::error::missing from site: $path"
+              missing=1
+            fi
+          done
+          exit "$missing"
+
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: ${{ runner.temp }}/site
