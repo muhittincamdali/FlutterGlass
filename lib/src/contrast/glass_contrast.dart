@@ -87,17 +87,20 @@ abstract final class GlassContrast {
     required List<Color> backdrop,
     double targetRatio = aa,
   }) {
+    // The painted style: its tint has finite channels, so the search and the
+    // division below never see a NaN.
+    final painted = style.sanitized();
     final opacity = minimumTintOpacity(
       foreground: foreground,
-      tint: style.tint,
+      tint: painted.tint,
       backdrop: backdrop,
       targetRatio: targetRatio,
     );
     // The painted alpha is tint.a × tintOpacity, so a tint that is itself
     // translucent needs a proportionally higher tintOpacity.
-    final tintAlpha = style.tint.a;
+    final tintAlpha = painted.tint.a;
     final needed = opacity == null || tintAlpha == 0 ? 1.0 : math.min(1.0, opacity / tintAlpha);
-    final current = style.sanitized().tintOpacity;
+    final current = painted.tintOpacity;
     return needed > current ? style.copyWith(tintOpacity: needed) : style;
   }
 

@@ -58,7 +58,8 @@ class GlassAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final base = style ?? GlassTheme.styleOf(context);
     final glass = base.copyWith(borderRadius: BorderRadius.zero, borderWidth: 0, shadows: const []);
-    final hairline = base.rimColor.withValues(alpha: base.rimColor.a * base.sanitized().borderOpacity * 0.6);
+    final clean = base.sanitized();
+    final hairline = clean.rimColor.withValues(alpha: clean.rimColor.a * clean.borderOpacity * 0.6);
     return DecoratedBox(
       position: DecorationPosition.foreground,
       decoration: BoxDecoration(

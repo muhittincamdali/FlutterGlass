@@ -1,3 +1,5 @@
+import 'dart:ui' show ColorSpace;
+
 import 'package:flutter/painting.dart';
 import 'package:flutter_glass/flutter_glass.dart';
 import 'package:flutter_glass/src/style/sanitize.dart';
@@ -48,6 +50,27 @@ void main() {
       expect(clean.shadows.first.blurRadius, 100);
       expect(clean.shadows.first.offset, const Offset(200, 0));
       expect(clean.shadows[3].offset.dy, 3);
+    });
+
+    test('cleans the channels of the tint, the rim and the shadow colors', () {
+      final broken = const Color.from(alpha: double.nan, red: double.infinity, green: double.nan, blue: 0.5);
+      final clean = GlassStyle(
+        tint: broken,
+        rimColor: broken,
+        shadows: [BoxShadow(color: broken)],
+      ).sanitized();
+      for (final color in [clean.tint, clean.rimColor, clean.shadows.single.color]) {
+        expect(color.a, 0);
+        expect(color.r, 1);
+        expect(color.g, 0);
+        expect(color.b, 0.5);
+      }
+      expect(GlassStyle(tint: broken, tintOpacity: 1).effectiveTint.a, 0);
+    });
+
+    test('keeps finite wide-gamut channels outside 0-1', () {
+      final wide = const Color.from(alpha: 1, red: 1.2, green: -0.1, blue: 0.4, colorSpace: ColorSpace.extendedSRGB);
+      expect(GlassStyle(tint: wide).sanitized().tint, wide);
     });
 
     test('leaves a valid style unchanged', () {

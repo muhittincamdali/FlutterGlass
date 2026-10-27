@@ -117,6 +117,14 @@ void main() {
       expect(legible.effectiveTint.a, closeTo(needed, 1e-6));
     });
 
+    test('reads a tint with a NaN alpha as transparent instead of returning NaN', () {
+      const style = GlassStyle(tint: Color.from(alpha: double.nan, red: 0, green: 0, blue: 0));
+      final legible = GlassContrast.legibleStyle(style, foreground: white, backdrop: [white]);
+      // An invisible tint cannot reach the target; the opacity goes as high as it can.
+      expect(legible.tintOpacity, 1);
+      expect(legible.effectiveTint.a, 0);
+    });
+
     test('makes the tint opaque when the target is out of reach', () {
       const style = GlassStyle(tintOpacity: 0.3);
       expect(GlassContrast.legibleStyle(style, foreground: white, backdrop: [white]).tintOpacity, 1);

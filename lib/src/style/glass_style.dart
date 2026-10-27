@@ -107,23 +107,29 @@ class GlassStyle with Diagnosticable {
   final List<BoxShadow> shadows;
 
   /// The tint with [tintOpacity] applied, as painted over the backdrop. The
-  /// opacity is clamped to 0–1 here too, so a NaN never reaches a color.
-  Color get effectiveTint => tint.withValues(alpha: tint.a * finiteClamp(tintOpacity, min: 0, max: 1, fallback: 0));
+  /// tint and the opacity are mapped into range here too, so a NaN never
+  /// reaches a color.
+  Color get effectiveTint {
+    final cleanTint = finiteColor(tint);
+    return cleanTint.withValues(alpha: cleanTint.a * finiteClamp(tintOpacity, min: 0, max: 1, fallback: 0));
+  }
 
   /// A copy of this style with every value mapped into its supported range.
   ///
   /// NaN maps to the default for the field, infinity to the nearest bound,
-  /// and only the first [maxShadows] shadows are kept.
+  /// and only the first [maxShadows] shadows are kept. The channels of
+  /// [tint], [rimColor] and the shadow colors are cleaned the same way: a
+  /// NaN alpha becomes 0.
   GlassStyle sanitized() {
     return GlassStyle(
       blurSigma: finiteClamp(blurSigma, min: 0, max: maxBlurSigma, fallback: 0),
-      tint: tint,
+      tint: finiteColor(tint),
       tintOpacity: finiteClamp(tintOpacity, min: 0, max: 1, fallback: 0),
       saturation: finiteClamp(saturation, min: 0, max: maxSaturation, fallback: 1),
       borderRadius: borderRadius,
       corners: corners,
       borderWidth: finiteClamp(borderWidth, min: 0, max: maxBorderWidth, fallback: 0),
-      rimColor: rimColor,
+      rimColor: finiteColor(rimColor),
       borderOpacity: finiteClamp(borderOpacity, min: 0, max: 1, fallback: 0),
       shadows: [for (final shadow in shadows.take(maxShadows)) _sanitizeShadow(shadow)],
     );
@@ -206,7 +212,7 @@ class GlassStyle with Diagnosticable {
   static BoxShadow _sanitizeShadow(BoxShadow shadow) {
     double offset(double v) => finiteClamp(v, min: -200, max: 200, fallback: 0);
     return BoxShadow(
-      color: shadow.color,
+      color: finiteColor(shadow.color),
       offset: Offset(offset(shadow.offset.dx), offset(shadow.offset.dy)),
       blurRadius: finiteClamp(shadow.blurRadius, min: 0, max: 100, fallback: 0),
       spreadRadius: finiteClamp(shadow.spreadRadius, min: -100, max: 100, fallback: 0),
