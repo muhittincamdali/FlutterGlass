@@ -31,11 +31,7 @@ void main() {
       backdrop.filterConfig,
       ImageFilterConfig.compose(
         outer: ImageFilterConfig(ColorFilter.matrix(glassSaturationMatrix(GlassStyle.light.saturation))),
-        inner: ImageFilterConfig.blur(
-          sigmaX: GlassStyle.light.blurSigma,
-          sigmaY: GlassStyle.light.blurSigma,
-          bounded: true,
-        ),
+        inner: ImageFilterConfig.blur(sigmaX: GlassStyle.light.blurSigma, sigmaY: GlassStyle.light.blurSigma),
       ),
     );
     expect(backdrop.backdropKey, isNull);
@@ -44,7 +40,7 @@ void main() {
   });
 
   testWidgets('a saturation of 1 blurs without a color filter', (tester) async {
-    await tester.pumpWidget(host(const GlassSurface(style: GlassStyle(saturation: 1, boundedBlur: false))));
+    await tester.pumpWidget(host(const GlassSurface(style: GlassStyle(saturation: 1))));
     final backdrop = tester.renderObject<RenderBackdropFilter>(find.byType(BackdropFilter));
     expect(backdrop.filterConfig, const ImageFilterConfig.blur(sigmaX: 16, sigmaY: 16));
   });

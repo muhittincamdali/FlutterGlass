@@ -102,7 +102,10 @@ class GlassSurface extends StatelessWidget {
   }
 
   static Widget _backdrop(BuildContext context, GlassStyle glass, Widget child) {
-    final blur = ImageFilterConfig.blur(sigmaX: glass.blurSigma, sigmaY: glass.blurSigma, bounded: glass.boundedBlur);
+    // Unbounded on purpose: with `bounded: true`, Flutter 3.47 on the iOS 27
+    // simulator (Impeller) left the backdrop of a surface inside a scrolling
+    // list unblurred and drew a seam near its top edge.
+    final blur = ImageFilterConfig.blur(sigmaX: glass.blurSigma, sigmaY: glass.blurSigma);
     final filter = glass.saturation == 1
         ? blur
         : ImageFilterConfig.compose(

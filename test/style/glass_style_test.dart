@@ -122,7 +122,7 @@ void main() {
   test('equality and hashCode cover every field', () {
     expect(const GlassStyle(), GlassStyle.light);
     expect(const GlassStyle().hashCode, GlassStyle.light.hashCode);
-    expect(GlassStyle.light.copyWith(boundedBlur: false), isNot(GlassStyle.light));
+    expect(GlassStyle.light.copyWith(corners: GlassCorners.circular), isNot(GlassStyle.light));
     expect(GlassStyle.light.copyWith(shadows: const []), isNot(GlassStyle.light));
     expect(GlassStyle.light.copyWith(rimColor: const Color(0xFF000000)), isNot(GlassStyle.light));
   });

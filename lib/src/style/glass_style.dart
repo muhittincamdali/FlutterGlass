@@ -34,7 +34,6 @@ class GlassStyle with Diagnosticable {
     this.borderWidth = 1,
     this.rimColor = const Color(0xFFFFFFFF),
     this.borderOpacity = 0.55,
-    this.boundedBlur = true,
     this.shadows = const [BoxShadow(color: Color(0x1F000000), blurRadius: 24, offset: Offset(0, 8))],
   });
 
@@ -104,10 +103,6 @@ class GlassStyle with Diagnosticable {
   /// rim fades to a quarter of it at the opposite corner.
   final double borderOpacity;
 
-  /// Whether the blur samples only the backdrop inside the surface's bounds,
-  /// so bright content next to the glass does not bleed into its edges.
-  final bool boundedBlur;
-
   /// Shadows painted outside the shape only, so they never darken the glass.
   final List<BoxShadow> shadows;
 
@@ -129,7 +124,6 @@ class GlassStyle with Diagnosticable {
       borderWidth: finiteClamp(borderWidth, min: 0, max: maxBorderWidth, fallback: 0),
       rimColor: rimColor,
       borderOpacity: finiteClamp(borderOpacity, min: 0, max: 1, fallback: 0),
-      boundedBlur: boundedBlur,
       shadows: [for (final shadow in shadows.take(maxShadows)) _sanitizeShadow(shadow)],
     );
   }
@@ -161,7 +155,6 @@ class GlassStyle with Diagnosticable {
     double? borderWidth,
     Color? rimColor,
     double? borderOpacity,
-    bool? boundedBlur,
     List<BoxShadow>? shadows,
   }) {
     return GlassStyle(
@@ -174,7 +167,6 @@ class GlassStyle with Diagnosticable {
       borderWidth: borderWidth ?? this.borderWidth,
       rimColor: rimColor ?? this.rimColor,
       borderOpacity: borderOpacity ?? this.borderOpacity,
-      boundedBlur: boundedBlur ?? this.boundedBlur,
       shadows: shadows ?? this.shadows,
     );
   }
@@ -201,7 +193,6 @@ class GlassStyle with Diagnosticable {
       borderWidth: mix(from.borderWidth, to.borderWidth),
       rimColor: Color.lerp(from.rimColor, to.rimColor, safeT)!,
       borderOpacity: mix(from.borderOpacity, to.borderOpacity),
-      boundedBlur: safeT < 0.5 ? from.boundedBlur : to.boundedBlur,
       shadows: BoxShadow.lerpList(from.shadows, to.shadows, safeT) ?? const [],
     );
   }
@@ -229,7 +220,6 @@ class GlassStyle with Diagnosticable {
         other.borderWidth == borderWidth &&
         other.rimColor == rimColor &&
         other.borderOpacity == borderOpacity &&
-        other.boundedBlur == boundedBlur &&
         listEquals(other.shadows, shadows);
   }
 
@@ -244,7 +234,6 @@ class GlassStyle with Diagnosticable {
     borderWidth,
     rimColor,
     borderOpacity,
-    boundedBlur,
     Object.hashAll(shadows),
   );
 
@@ -261,7 +250,6 @@ class GlassStyle with Diagnosticable {
       ..add(DoubleProperty('borderWidth', borderWidth))
       ..add(ColorProperty('rimColor', rimColor))
       ..add(DoubleProperty('borderOpacity', borderOpacity))
-      ..add(FlagProperty('boundedBlur', value: boundedBlur, ifFalse: 'unbounded blur'))
       ..add(IterableProperty<BoxShadow>('shadows', shadows));
   }
 }
