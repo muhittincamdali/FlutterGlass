@@ -106,8 +106,9 @@ class GlassStyle with Diagnosticable {
   /// Shadows painted outside the shape only, so they never darken the glass.
   final List<BoxShadow> shadows;
 
-  /// The tint with [tintOpacity] applied, as painted over the backdrop.
-  Color get effectiveTint => tint.withValues(alpha: tint.a * tintOpacity);
+  /// The tint with [tintOpacity] applied, as painted over the backdrop. The
+  /// opacity is clamped to 0–1 here too, so a NaN never reaches a color.
+  Color get effectiveTint => tint.withValues(alpha: tint.a * finiteClamp(tintOpacity, min: 0, max: 1, fallback: 0));
 
   /// A copy of this style with every value mapped into its supported range.
   ///

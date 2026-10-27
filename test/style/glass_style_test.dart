@@ -82,6 +82,12 @@ void main() {
     expect(style.effectiveTint.r, 1);
   });
 
+  test('effectiveTint never carries a NaN or out-of-range alpha', () {
+    expect(const GlassStyle(tintOpacity: double.nan).effectiveTint.a, 0);
+    expect(const GlassStyle(tintOpacity: double.infinity).effectiveTint.a, 1);
+    expect(const GlassStyle(tintOpacity: -2).effectiveTint.a, 0);
+  });
+
   group('GlassStyle.lerp', () {
     const a = GlassStyle(blurSigma: 0, tintOpacity: 0, borderRadius: BorderRadius.zero);
     const b = GlassStyle(
