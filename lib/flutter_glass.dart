@@ -9,5 +9,6 @@ library;
 export 'src/contrast/glass_contrast.dart';
 export 'src/style/glass_style.dart';
 export 'src/theme/glass_theme.dart';
+export 'src/widgets/glass_bars.dart';
 export 'src/widgets/glass_controls.dart';
 export 'src/widgets/glass_surface.dart';
