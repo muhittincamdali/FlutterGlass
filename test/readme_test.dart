@@ -124,11 +124,34 @@ void main() {
     }
   });
 
-  test('Choose how much glass to draw', () {
-    for (final reduceTransparency in [true, false]) {
-      final data = GlassThemeData(fidelity: reduceTransparency ? GlassFidelity.opaque : GlassFidelity.auto);
-      expect(data.fidelity, reduceTransparency ? GlassFidelity.opaque : GlassFidelity.auto);
+  testWidgets('Choose how much glass to draw', (tester) async {
+    Future<void> pumpWith({required bool reduceTransparency, bool highContrast = false}) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: ThemeData(
+            extensions: [GlassThemeData(fidelity: reduceTransparency ? GlassFidelity.opaque : GlassFidelity.auto)],
+          ),
+          // Stands in for the iOS Increase Contrast setting.
+          builder: (context, child) => MediaQuery(
+            data: MediaQuery.of(context).copyWith(highContrast: highContrast),
+            child: child!,
+          ),
+          home: const Center(child: GlassSurface(width: 100, height: 100)),
+        ),
+      );
+      // MaterialApp animates a theme change; let it finish.
+      await tester.pumpAndSettle();
     }
+
+    // auto draws full glass: the backdrop is blurred.
+    await pumpWith(reduceTransparency: false);
+    expect(find.byType(BackdropFilter), findsOneWidget);
+    // opaque never reads the backdrop.
+    await pumpWith(reduceTransparency: true);
+    expect(find.byType(BackdropFilter), findsNothing);
+    // auto turns opaque when the platform reports high contrast.
+    await pumpWith(reduceTransparency: false, highContrast: true);
+    expect(find.byType(BackdropFilter), findsNothing);
   });
 
   testWidgets('Show a glass sheet', (tester) async {
