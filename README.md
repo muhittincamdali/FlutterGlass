@@ -1,162 +1,88 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/Swift-6.0-FA7343?style=for-the-badge&logo=swift&logoColor=white" alt="Swift 6.0"/>
-  <img src="https://img.shields.io/badge/Platform-iOS%20|%20macOS%20|%20visionOS-007AFF?style=for-the-badge&logo=apple&logoColor=white" alt="Platform"/>
-  <img src="https://img.shields.io/badge/Standard-Unified%20Core-5856D6?style=for-the-badge" alt="Standard"/>
-</p>
+<!-- brand:start -->
 
----
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/banner-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/banner-light.svg" alt="FlutterGlass: Glass surfaces for Flutter: blurred panels, buttons and bars that keep text readable and follow accessibility settings."></picture></p>
 
-> **🛡️ PART OF THE 2026 UNIFIED CORE**
-> This repository is a verified component of 'The Endless March' initiative. Purified for Swift 6, zero-dependency, and engineered for maximum hardware saturation.
-> 
-> *Flagship Engines:* [SwiftNetwork](https://github.com/muhittincamdali/SwiftNetwork) | [SwiftAI](https://github.com/muhittincamdali/SwiftAI) | [LiquidGlassKit](https://github.com/muhittincamdali/LiquidGlassKit)
-
----
-
-<h1 align="center">FlutterGlass</h1>
-
-## 🚀 Killer Feature: Custom Fragment Shaders
-We bypass Flutter's standard `BackdropFilter` limitations. FlutterGlass includes custom `.frag` programs compiled for Impeller, delivering native-quality chromatic aberration and blur directly on the GPU.
-
-## 🚀 Killer Feature: Native iOS Material Bridge
-Flutter's `BackdropFilter` is expensive and inaccurate on iOS. FlutterGlass bypasses it entirely by bridging directly to a native `UIVisualEffectView` (`.ultraThinMaterial`), achieving pixel-perfect Apple aesthetics with zero performance compromise.
-
+<!-- lang-selector:start -->
+<p align="center"><a href="README.md">English</a> · <a href="README.tr.md">Türkçe</a> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.ja.md">日本語</a> · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.de.md">Deutsch</a> · <a href="README.fr.md">Français</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.ru.md">Русский</a></p>
+<!-- lang-selector:end -->
 
 <p align="center">
-  <strong>🧊 Premium glassmorphism & aurora UI kit for Flutter</strong>
+<a href="https://github.com/muhittincamdali/FlutterGlass/actions/workflows/ci.yml"><img src="https://github.com/muhittincamdali/FlutterGlass/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
+<a href="https://github.com/muhittincamdali/FlutterGlass/releases"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-version-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-version-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-version-light.svg" alt="Latest version: v1.0.0"></picture></a>
+<a href="https://github.com/muhittincamdali/FlutterGlass/blob/main/pubspec.yaml"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-framework-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-framework-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-framework-light.svg" alt="Language version: Flutter 3.41+"></picture></a>
+<a href="https://github.com/muhittincamdali/FlutterGlass/blob/main/pubspec.yaml"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-language-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-language-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-language-light.svg" alt="Language version: Dart 3.11+"></picture></a>
+<a href="https://github.com/muhittincamdali/FlutterGlass/blob/main/LICENSE"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-license-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-license-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/badge-license-light.svg" alt="License: MIT"></picture></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/muhittincamdali/FlutterGlass/actions/workflows/ci.yml">
-    <img src="https://github.com/muhittincamdali/FlutterGlass/actions/workflows/ci.yml/badge.svg" alt="CI"/>
-  </a>
-  <a href="https://pub.dev/packages/flutter_glass">
-    <img src="https://img.shields.io/badge/pub.dev-flutter__glass-blue?style=flat-square&logo=dart" alt="pub.dev"/>
-  </a>
-  <img src="https://img.shields.io/badge/Flutter-3.24-02569B?style=flat-square&logo=flutter&logoColor=white" alt="Flutter 3.24"/>
-  <img src="https://img.shields.io/badge/Dart-3.5-0175C2?style=flat-square&logo=dart&logoColor=white" alt="Dart 3.5"/>
-  <img src="https://img.shields.io/badge/Platform-iOS%20%7C%20Android%20%7C%20Web-lightgrey?style=flat-square" alt="Platform"/>
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"/>
+<a href="#quick-start"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/button-start-en-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/button-start-en-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/button-start-en-light.svg" alt="Get started"></picture></a>
+<a href="https://muhittincamdali.github.io/FlutterGlass/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/button-docs-en-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/button-docs-en-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/button-docs-en-light.svg" alt="Documentation"></picture></a>
+<a href="https://github.com/muhittincamdali/FlutterGlass/tree/main/example"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/button-examples-en-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/button-examples-en-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/FlutterGlass/main/.github/brand/button-examples-en-light.svg" alt="Examples"></picture></a>
 </p>
 
-<p align="center">
-  <a href="#features">Features</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#quick-start">Quick Start</a> •
-  <a href="#components">Components</a> •
-  <a href="#contributing">Contributing</a>
-</p>
+<!-- brand:end -->
+FlutterGlass is a Flutter package of glass widgets: panels, cards, buttons, an app bar, a
+navigation bar and a bottom sheet that blur and tint whatever scrolls behind them. It is for
+apps that want the translucent look of iOS without losing readable text or accessibility
+support. A surface turns opaque when the user asks for more contrast, a contrast helper
+computes how much tint keeps text readable over a given background, and every number in a
+style is clamped before it reaches the renderer. The package depends only on Flutter itself;
+the example app is run on an iOS simulator and built for macOS.
 
----
+## Highlights
 
-## 📋 Table of Contents
+- **Readable by design** — `GlassContrast` uses the WCAG 2.2 formulas to find the lowest tint
+  opacity that gives your text a 4.5:1 ratio over every color you sample from the background.
+- **Follows accessibility settings** — with the iOS **Increase Contrast** setting on, glass
+  turns opaque; with **Reduce Motion** on, button presses and style changes stop animating.
+- **Three fidelity levels** — full glass, a reduced level without blur (no backdrop read) and
+  an opaque level, set per widget or for the whole app.
+- **Shared backdrop reads** — surfaces inside a `GlassGroup` use Flutter's `BackdropGroup`, so
+  Impeller copies the screen behind them once instead of once per surface.
+- **Safe with any input** — NaN, infinite and negative values in a `GlassStyle` are mapped into
+  range, and the blur is capped, so a slider or an animation overshoot cannot break a frame.
+- **Material underneath** — the bars wrap Flutter's `AppBar` and `NavigationBar`, so semantics,
+  keyboard handling and theming work as they do without glass.
 
-- [Why FlutterGlass?](#why-flutterglass)
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Components](#components)
-  - [GlassCard](#glasscard)
-  - [GlassButton](#glassbutton)
-  - [GlassNavBar](#glassnavbar)
-  - [AuroraBackground](#aurorabackground)
-  - [MeshGradient](#meshgradient)
-- [Customization](#customization)
-- [Performance](#performance)
-- [Contributing](#contributing)
-- [License](#license)
-- [Star History](#-star-history)
+## Quick start
 
----
+**1. Add the package**
 
-## Why FlutterGlass?
-
-Glassmorphism is beautiful but hard to implement correctly. **FlutterGlass** provides production-ready glass effects with performance optimizations and consistent look across platforms.
-
-```dart
-// Frosted glass card in seconds
-GlassCard(
-  blur: 10,
-  opacity: 0.2,
-  child: Text('Beautiful glass effect'),
-)
-
-// Stunning aurora background
-AuroraBackground(
-  colors: [Colors.purple, Colors.blue, Colors.teal],
-  child: YourContent(),
-)
+```sh
+flutter pub add "flutter_glass@{git: {url: https://github.com/muhittincamdali/FlutterGlass.git, ref: v2.0.0}}"
 ```
 
-## Features
+You need [Flutter](https://docs.flutter.dev/install) 3.41 or later.
 
-| Feature | Description |
-|---------|-------------|
-| 🧊 **Glass Effects** | Blur, frost, tint with GPU acceleration |
-| 🌈 **Aurora** | Animated gradient backgrounds |
-| ✨ **Glow** | Neon and soft glows |
-| 🎨 **Gradients** | Mesh and radial gradients |
-| 📱 **Adaptive** | iOS/Android/Web optimized |
-| ⚡ **Performant** | GPU-accelerated rendering |
-| 🎯 **Customizable** | Every property configurable |
-| 🧪 **Tested** | Comprehensive test coverage |
-
-## Requirements
-
-| Requirement | Version |
-|-------------|---------|
-| Flutter | 3.24+ |
-| Dart | 3.5+ |
-| iOS | 12.0+ |
-| Android | API 21+ |
-
-## Installation
-
-### pub.dev
-
-```yaml
-dependencies:
-  flutter_glass: ^1.0.0
-```
-
-Then run:
-
-```bash
-flutter pub get
-```
-
-### Git
-
-```yaml
-dependencies:
-  flutter_glass:
-    git:
-      url: https://github.com/muhittincamdali/FlutterGlass.git
-      ref: main
-```
-
-## Quick Start
+**2. Import the module**
 
 ```dart
 import 'package:flutter_glass/flutter_glass.dart';
+```
 
-class MyWidget extends StatelessWidget {
+**3. Use it**
+
+Put a `GlassCard` over something colorful; this is a complete app:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_glass/flutter_glass.dart';
+
+void main() => runApp(const MaterialApp(home: HelloGlass()));
+
+class HelloGlass extends StatelessWidget {
+  const HelloGlass({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return AuroraBackground(
-      colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
-      child: Center(
-        child: GlassCard(
-          blur: 10,
-          opacity: 0.2,
-          borderRadius: 20,
-          child: Padding(
-            padding: EdgeInsets.all(24),
-            child: Text(
-              'Hello Glass!',
-              style: TextStyle(color: Colors.white, fontSize: 24),
-            ),
+    return Scaffold(
+      body: DecoratedBox(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [Color(0xFF0A84FF), Color(0xFFFF9F0A)]),
+        ),
+        child: Center(
+          child: GlassCard(
+            child: Text('Hello, glass', style: Theme.of(context).textTheme.headlineSmall),
           ),
         ),
       ),
@@ -165,159 +91,196 @@ class MyWidget extends StatelessWidget {
 }
 ```
 
-## Components
+Glass blurs what is behind it, so over a plain white screen it looks like a pale box: keep an
+image, a gradient or scrolling content underneath.
 
-### GlassCard
+## Installation
+
+The package is installed from this repository. In `pubspec.yaml`:
+
+```yaml
+dependencies:
+  flutter_glass:
+    git:
+      url: https://github.com/muhittincamdali/FlutterGlass.git
+      ref: v2.0.0
+```
+
+Then run `flutter pub get`. Use a tag for `ref` so a later change on `main` does not change
+your build.
+
+## Usage
+
+### Style a surface
+
+`GlassSurface` is the building block; `GlassCard` adds padding and an optional tap. Start from a
+preset and change what you need:
 
 ```dart
-GlassCard(
-  blur: 10,
-  opacity: 0.2,
-  borderRadius: 20,
-  border: GlassBorder(
-    width: 1,
-    color: Colors.white.withOpacity(0.3),
+GlassSurface(
+  width: 220,
+  height: 120,
+  alignment: Alignment.center,
+  style: GlassStyle.frosted.copyWith(
+    tint: const Color(0xFF0A84FF),
+    borderRadius: const BorderRadius.all(Radius.circular(32)),
   ),
-  child: Padding(
-    padding: EdgeInsets.all(20),
-    child: Text('Glass Card'),
+  child: const Text('Frosted'),
+)
+```
+
+The presets are `GlassStyle.light` (the default), `dark`, `clear` and `frosted`. Corners are
+continuous, as on iOS, unless you set `corners: GlassCorners.circular`.
+
+### Let content scroll under the bars
+
+```dart
+Scaffold(
+  extendBodyBehindAppBar: true,
+  extendBody: true,
+  appBar: const GlassAppBar(title: Text('Library')),
+  // Without its own padding, a ListView pads itself by the bars' heights.
+  body: ListView(children: rows),
+  bottomNavigationBar: GlassNavigationBar(
+    selectedIndex: tab,
+    onDestinationSelected: (index) => setState(() => tab = index),
+    destinations: const [
+      NavigationDestination(icon: Icon(Icons.photo_library_outlined), label: 'Library'),
+      NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
+    ],
   ),
 )
 ```
 
-### GlassButton
+The navigation bar floats as a pill above the home indicator; `floating: false` spans the
+bottom edge instead.
+
+### Theme light and dark mode
 
 ```dart
-GlassButton(
-  onPressed: () => print('Pressed!'),
-  blur: 5,
-  child: Text('Press Me'),
-)
-```
-
-### GlassNavBar
-
-```dart
-GlassNavBar(
-  items: [
-    GlassNavItem(icon: Icons.home, label: 'Home'),
-    GlassNavItem(icon: Icons.search, label: 'Search'),
-    GlassNavItem(icon: Icons.person, label: 'Profile'),
-  ],
-  currentIndex: 0,
-  onTap: (index) => setState(() => _currentIndex = index),
-)
-```
-
-### AuroraBackground
-
-```dart
-AuroraBackground(
-  colors: [
-    Color(0xFF667EEA),
-    Color(0xFF764BA2),
-    Color(0xFFF093FB),
-  ],
-  speed: 0.5,
-  child: Scaffold(
-    backgroundColor: Colors.transparent,
-    body: YourContent(),
+MaterialApp(
+  theme: ThemeData(extensions: const [GlassThemeData(style: GlassStyle.light)]),
+  darkTheme: ThemeData(
+    brightness: Brightness.dark,
+    extensions: const [GlassThemeData(style: GlassStyle.dark)],
   ),
+  home: const HomePage(),
 )
 ```
 
-### MeshGradient
+Without a `GlassThemeData`, glass picks the light or dark preset from the theme's brightness.
+
+### Keep text readable
 
 ```dart
-MeshGradient(
-  colors: [
-    [Colors.red, Colors.orange],
-    [Colors.purple, Colors.blue],
-  ],
-  child: YourContent(),
+final style = GlassContrast.legibleStyle(
+  GlassStyle.dark,
+  foreground: Colors.white,
+  // The lightest and most saturated colors that can appear behind the glass.
+  backdrop: const [Color(0xFFEAF4FF), Color(0xFF64D2FF), Color(0xFFFF9F0A)],
+);
+```
+
+`legibleStyle` raises the tint opacity until white text reaches 4.5:1 over each sampled color.
+`GlassContrast.minimumTintOpacity` returns the number itself, or null when no opacity is enough.
+
+### Choose how much glass to draw
+
+```dart
+GlassThemeData(
+  fidelity: reduceTransparency ? GlassFidelity.opaque : GlassFidelity.auto,
 )
 ```
 
-## Customization
+`auto` draws full glass and switches to opaque when the platform reports high contrast.
+`GlassFidelity.reduced` drops the blur but keeps a translucent tint, for long lists or older
+devices.
+
+### Show a glass sheet
 
 ```dart
-GlassCard(
-  // Blur intensity (0-50)
-  blur: 15,
-  
-  // Background opacity (0-1)
-  opacity: 0.1,
-  
-  // Tint color
-  tint: Colors.blue,
-  
-  // Border styling
-  border: GlassBorder(
-    width: 2,
-    gradient: LinearGradient(
-      colors: [Colors.white54, Colors.white10],
-    ),
+final choice = await showGlassModalBottomSheet<String>(
+  context: context,
+  builder: (context) => ListTile(
+    title: const Text('Share'),
+    onTap: () => Navigator.pop(context, 'share'),
   ),
-  
-  // Shadow
-  shadow: GlassShadow(
-    color: Colors.black26,
-    blurRadius: 20,
-  ),
-  
-  child: YourContent(),
-)
+);
 ```
 
-## Performance
+## Screenshots
 
-```dart
-// Enable caching for static glass elements
-GlassCard(
-  cacheExtent: true,
-  child: StaticContent(),
-)
+The [example app](example) on an iPhone 18 Pro simulator (iOS 27). The blur is rendered by
+Impeller over a backdrop the app draws in code.
 
-// Reduce blur on low-end devices
-GlassCard(
-  blur: Platform.isAndroid ? 5 : 10,
-  child: Content(),
-)
+| Surfaces                                                                                                        | Surfaces, dark                                                         | Controls                                                                                | Contrast                                                                                      | Sheet                                                                        |
+| --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| ![Glass presets, fidelity levels and corner styles over a striped blue backdrop](docs/screenshots/surfaces.png) | ![The same screen with dark glass](docs/screenshots/surfaces-dark.png) | ![Glass buttons, an animated surface and a weather card](docs/screenshots/controls.png) | ![A tint opacity slider that reports the worst contrast ratio](docs/screenshots/contrast.png) | ![A glass bottom sheet over the controls screen](docs/screenshots/sheet.png) |
 
-// Use RepaintBoundary for complex layouts
-RepaintBoundary(
-  child: GlassCard(...),
-)
+[`scripts/screenshots.sh`](scripts/screenshots.sh) builds the example and takes these
+screenshots. To run the example yourself:
+
+```sh
+cd example
+flutter run
 ```
+
+## Documentation
+
+The [API reference](https://muhittincamdali.github.io/FlutterGlass/) is built with `dart doc`
+from the comments in `lib/` and includes the guides below.
+
+## Guides
+
+- [Getting started](doc/guides/getting-started.md) — a card, bars, presets, a theme and a sheet,
+  step by step.
+- [Accessibility and contrast](doc/guides/accessibility.md) — the fidelity levels, the contrast
+  calculation and what the controls announce.
+- [Performance](doc/guides/performance.md) — what a backdrop blur costs and how `GlassGroup` and
+  `GlassFidelity.reduced` reduce it.
+
+## Requirements
+
+| Toolchain | Minimum version |
+| --------- | --------------- |
+| Flutter   | 3.41            |
+| Dart      | 3.11            |
+
+CI runs on the latest stable Flutter release; the tests also pass on Flutter 3.41.5.
+
+## Architecture
+
+- `lib/src/style/` — `GlassStyle`, an immutable value with `copyWith`, `lerp` and `sanitized`,
+  which clamps every number before painting.
+- `lib/src/theme/` — `GlassThemeData` (a `ThemeExtension`), `GlassTheme` (an `InheritedTheme`)
+  and `ResolvedGlass`, which combines the theme, the platform's accessibility flags and a
+  widget's own settings into what is painted.
+- `lib/src/rendering/` — the painters for the tint, the rim light and the shadow, which is
+  clipped so it never shows through the glass.
+- `lib/src/widgets/` — `GlassSurface` (clip, `BackdropFilter`, painters), `GlassGroup`,
+  `AnimatedGlassSurface`, and the controls and bars built on them.
+- `lib/src/contrast/` — `GlassContrast`, pure functions with bounded input.
+- `example/` — the gallery app, depending on this checkout with `path: ..`.
+
+Run the checks locally:
+
+```sh
+flutter analyze && flutter test
+cd example && flutter analyze && flutter test
+```
+
+## Roadmap
+
+- A refraction effect drawn with a fragment shader where Impeller supports
+  `ImageFilter.shader`, with the current blur as the fallback.
+- Bounded blur, once a bounded `ImageFilterConfig.blur` samples the right area inside scrolling
+  lists.
+- Glass versions of `SegmentedButton`, `Switch` and `SearchBar`.
 
 ## Contributing
 
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Contributions are welcome. Read the [contributing guide](https://github.com/muhittincamdali/FlutterGlass/blob/main/CONTRIBUTING.md) and the [code of conduct](https://github.com/muhittincamdali/.github/blob/main/CODE_OF_CONDUCT.md) before opening a pull request. Report security issues privately as described in the [security policy](https://github.com/muhittincamdali/.github/blob/main/SECURITY.md).
 
 ## License
 
-FlutterGlass is released under the MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-## 📈 Star History
-
-<a href="https://star-history.com/#muhittincamdali/FlutterGlass&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=muhittincamdali/FlutterGlass&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=muhittincamdali/FlutterGlass&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=muhittincamdali/FlutterGlass&type=Date" />
- </picture>
-</a>
-
----
-
-<p align="center">
-  Made with ❤️ by <a href="https://github.com/muhittincamdali">Muhittin Camdali</a>
-</p>
+Released under the MIT license. See [LICENSE](LICENSE).
