@@ -43,6 +43,10 @@ exclude = [
 remap = [
   '^https://raw\.githubusercontent\.com/muhittincamdali/FlutterGlass/main/(.*)$ file:///home/runner/work/FlutterGlass/FlutterGlass/$1',
   '^https://github\.com/muhittincamdali/FlutterGlass/(?:blob|tree)/main/(.*)$ file:///home/runner/work/FlutterGlass/FlutterGlass/$1',
+  # The documentation site is published by the Documentation workflow after a merge, so before
+  # that it answers 404. The README links to it, so the README stands in for the site root here;
+  # the real address is checked by hand after the first deploy.
+  '^https://muhittincamdali\.github\.io/FlutterGlass/?$ file:///home/runner/work/FlutterGlass/FlutterGlass/README.md',
 ]
 
 exclude_path = [
