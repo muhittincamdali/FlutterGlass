@@ -8,3 +8,4 @@ library;
 
 export 'src/contrast/glass_contrast.dart';
 export 'src/style/glass_style.dart';
+export 'src/theme/glass_theme.dart';
