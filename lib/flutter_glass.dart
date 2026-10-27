@@ -6,4 +6,5 @@
 /// [GlassThemeData] or [GlassTheme].
 library;
 
+export 'src/contrast/glass_contrast.dart';
 export 'src/style/glass_style.dart';
