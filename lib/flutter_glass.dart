@@ -1,29 +1,18 @@
-/// FlutterGlass — A premium glassmorphism UI toolkit for Flutter.
+/// Glass surfaces for Flutter: blurred, tinted, rim-lit panels, buttons and
+/// bars that stay readable, follow the platform's accessibility settings and
+/// share one backdrop read per screen.
 ///
-/// Provides frosted glass effects, aurora backgrounds, morphing animations,
-/// and a complete set of glass-styled widgets for building modern UIs.
-library flutter_glass;
+/// Start with [GlassSurface]; style it with [GlassStyle] and theme it with
+/// [GlassThemeData] or [GlassTheme].
+///
+/// {@category getting-started}
+/// {@category accessibility}
+/// {@category performance}
+library;
 
-// Core
-export 'src/core/glass_theme.dart';
-
-// Effects
-export 'src/effects/frosted_glass.dart';
-export 'src/effects/blur_layer.dart';
-export 'src/effects/aurora_background.dart';
-export 'src/liquid_glass.dart';
-
-// Widgets
-export 'src/widgets/glass_card.dart';
-export 'src/widgets/glass_button.dart';
-export 'src/widgets/glass_text_field.dart';
-export 'src/widgets/glass_navigation_bar.dart';
-export 'src/widgets/glass_app_bar.dart';
-export 'src/widgets/glass_bottom_sheet.dart';
-
-// Animations
-export 'src/animations/morphing_card.dart';
-export 'src/animations/shimmer_glass.dart';
-
-// Utilities
-export 'src/utils/glass_painter.dart';
+export 'src/contrast/glass_contrast.dart';
+export 'src/style/glass_style.dart';
+export 'src/theme/glass_theme.dart';
+export 'src/widgets/glass_bars.dart';
+export 'src/widgets/glass_controls.dart';
+export 'src/widgets/glass_surface.dart';

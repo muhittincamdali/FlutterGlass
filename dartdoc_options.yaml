@@ -1,0 +1,17 @@
+dartdoc:
+  categories:
+    getting-started:
+      displayName: Getting started
+      markdown: doc/guides/getting-started.md
+    accessibility:
+      displayName: Accessibility and contrast
+      markdown: doc/guides/accessibility.md
+    performance:
+      displayName: Performance
+      markdown: doc/guides/performance.md
+  categoryOrder:
+    - getting-started
+    - accessibility
+    - performance
+  errors:
+    - unresolved-doc-reference

@@ -1,0 +1,38 @@
+{
+  "name": "FlutterGlass",
+  "repository": "muhittincamdali/FlutterGlass",
+  "tagline": {
+    "en": "Glass surfaces for Flutter: blurred panels, buttons and bars that keep text readable and follow accessibility settings."
+  },
+  "tags": {
+    "en": [
+      "Flutter",
+      "Dart 3",
+      "Accessible",
+      "No dependencies"
+    ]
+  },
+  "motif": "phone",
+  "buttons": [
+    "start",
+    "docs",
+    "examples"
+  ],
+  "links": {
+    "docs": "https://muhittincamdali.github.io/FlutterGlass/",
+    "examples": "example"
+  },
+  "languages": [
+    "en",
+    "tr",
+    "zh-CN",
+    "ja",
+    "ko",
+    "es",
+    "de",
+    "fr",
+    "pt-BR",
+    "ru"
+  ],
+  "socialTheme": "dark"
+}
