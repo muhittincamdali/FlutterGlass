@@ -71,16 +71,19 @@ class GlassThemeData extends ThemeExtension<GlassThemeData> with Diagnosticable 
     );
   }
 
+  /// Interpolates towards [other]. A non-finite [t] (NaN or infinity) is
+  /// treated as 0, like [GlassStyle.lerp] does.
   @override
   GlassThemeData lerp(covariant ThemeExtension<GlassThemeData>? other, double t) {
     if (other is! GlassThemeData) {
       return this;
     }
+    final safeT = t.isFinite ? t : 0.0;
     return GlassThemeData(
-      style: GlassStyle.lerp(style, other.style, t),
-      fidelity: t < 0.5 ? fidelity : other.fidelity,
-      fallbackColor: Color.lerp(fallbackColor, other.fallbackColor, t),
-      reducedTintOpacity: lerpDouble(reducedTintOpacity, other.reducedTintOpacity, t)!,
+      style: GlassStyle.lerp(style, other.style, safeT),
+      fidelity: safeT < 0.5 ? fidelity : other.fidelity,
+      fallbackColor: Color.lerp(fallbackColor, other.fallbackColor, safeT),
+      reducedTintOpacity: lerpDouble(reducedTintOpacity, other.reducedTintOpacity, safeT)!,
     );
   }
 

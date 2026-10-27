@@ -172,7 +172,8 @@ class GlassStyle with Diagnosticable {
     );
   }
 
-  /// Interpolates between two styles. A NaN [t] is treated as 0.
+  /// Interpolates between two styles. A non-finite [t] (NaN or infinity) is
+  /// treated as 0.
   ///
   /// Values outside 0–1 extrapolate, as curves such as `Curves.elasticOut`
   /// require; [sanitized] brings the result back into range when painted.
@@ -183,7 +184,7 @@ class GlassStyle with Diagnosticable {
     if (identical(a, b)) {
       return a;
     }
-    final safeT = t.isNaN ? 0.0 : t;
+    final safeT = t.isFinite ? t : 0.0;
     final shadowT = safeT.clamp(0.0, 1.0);
     final from = a ?? b!.copyWith(tintOpacity: 0, borderOpacity: 0, blurSigma: 0, shadows: const []);
     final to = b ?? a!.copyWith(tintOpacity: 0, borderOpacity: 0, blurSigma: 0, shadows: const []);

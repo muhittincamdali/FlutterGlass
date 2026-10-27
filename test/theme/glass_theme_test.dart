@@ -144,6 +144,17 @@ void main() {
       expect(a.lerp(null, 0.5), a);
     });
 
+    test('lerp treats a non-finite t as 0', () {
+      const a = GlassThemeData(style: GlassStyle.light, reducedTintOpacity: 0.6);
+      const b = GlassThemeData(style: GlassStyle.dark, fidelity: GlassFidelity.reduced, reducedTintOpacity: 1);
+      for (final t in [double.nan, double.infinity, double.negativeInfinity]) {
+        final result = a.lerp(b, t);
+        expect(result.style, GlassStyle.light, reason: '$t');
+        expect(result.fidelity, GlassFidelity.auto, reason: '$t');
+        expect(result.reducedTintOpacity, 0.6, reason: '$t');
+      }
+    });
+
     test('copyWith replaces only the given fields', () {
       const data = GlassThemeData(style: GlassStyle.clear);
       final copy = data.copyWith(fidelity: GlassFidelity.opaque);

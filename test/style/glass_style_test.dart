@@ -111,10 +111,21 @@ void main() {
       expect(mid.corners, GlassCorners.circular);
     });
 
-    test('treats a NaN t as 0 instead of producing NaN values', () {
-      final result = GlassStyle.lerp(a, b, double.nan)!;
-      expect(result.blurSigma, 0);
-      expect(result.tintOpacity, 0);
+    test('treats a non-finite t as 0 instead of producing NaN values', () {
+      for (final t in [double.nan, double.infinity, double.negativeInfinity]) {
+        final result = GlassStyle.lerp(a, b, t)!;
+        expect(result.blurSigma, 0, reason: '$t');
+        expect(result.tintOpacity, 0, reason: '$t');
+      }
+    });
+
+    test('a huge finite t still sanitizes into range', () {
+      for (final t in [1e308, -1e308]) {
+        final painted = GlassStyle.lerp(GlassStyle.light, GlassStyle.dark, t)!.sanitized();
+        expect(painted.blurSigma, inInclusiveRange(0, GlassStyle.maxBlurSigma), reason: '$t');
+        expect(painted.tintOpacity, inInclusiveRange(0, 1), reason: '$t');
+        expect(painted.effectiveTint.a, inInclusiveRange(0, 1), reason: '$t');
+      }
     });
 
     test('keeps shadows valid when t overshoots, as easeOutBack and elasticOut do', () {
