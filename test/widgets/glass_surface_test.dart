@@ -157,6 +157,24 @@ void main() {
       await tester.pump();
       expect(fillPainter(tester).fill.a, 1);
     });
+
+    testWidgets('an elasticOut curve can animate to a style without shadows', (tester) async {
+      Widget elastic(GlassStyle style) => host(
+        AnimatedGlassSurface(
+          duration: const Duration(milliseconds: 600),
+          curve: Curves.elasticOut,
+          style: style,
+          child: const SizedBox(width: 100, height: 100),
+        ),
+      );
+      await tester.pumpWidget(elastic(GlassStyle.light));
+      await tester.pumpWidget(elastic(GlassStyle.light.copyWith(shadows: const [])));
+      // elasticOut overshoots 1 early in the animation; step through all of it.
+      for (var frame = 0; frame < 40; frame++) {
+        await tester.pump(const Duration(milliseconds: 16));
+        expect(tester.takeException(), isNull);
+      }
+    });
   });
 
   test('GlassStyleTween uses GlassStyle.lerp', () {

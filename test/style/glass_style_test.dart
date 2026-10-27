@@ -117,6 +117,25 @@ void main() {
       expect(result.tintOpacity, 0);
     });
 
+    test('keeps shadows valid when t overshoots, as easeOutBack and elasticOut do', () {
+      final noShadows = GlassStyle.light.copyWith(shadows: const []);
+      final cases = [
+        GlassStyle.lerp(GlassStyle.light, noShadows, 1.1)!,
+        GlassStyle.lerp(noShadows, GlassStyle.light, -0.1)!,
+        GlassStyle.lerp(null, GlassStyle.light, -0.1)!,
+        GlassStyle.lerp(GlassStyle.light, GlassStyle.dark, 1.4)!,
+        GlassStyle.lerp(GlassStyle.light, GlassStyle.dark, -0.4)!,
+      ];
+      for (final style in cases) {
+        for (final shadow in style.shadows) {
+          expect(shadow.blurRadius, greaterThanOrEqualTo(0));
+        }
+      }
+      expect(GlassStyle.lerp(GlassStyle.light, GlassStyle.dark, 1.4)!.shadows, GlassStyle.dark.shadows);
+      // The other fields still extrapolate.
+      expect(GlassStyle.lerp(a, b, 1.1)!.blurSigma, closeTo(22, 1e-9));
+    });
+
     test('fades in from null', () {
       final half = GlassStyle.lerp(null, b, 0.5)!;
       expect(half.tintOpacity, 0.5);

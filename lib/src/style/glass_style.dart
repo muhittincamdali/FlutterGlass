@@ -176,11 +176,15 @@ class GlassStyle with Diagnosticable {
   ///
   /// Values outside 0–1 extrapolate, as curves such as `Curves.elasticOut`
   /// require; [sanitized] brings the result back into range when painted.
+  /// Shadows are the exception: they are interpolated with [t] clamped to
+  /// 0–1, because [BoxShadow] rejects the negative blur radius an
+  /// extrapolated shadow would get.
   static GlassStyle? lerp(GlassStyle? a, GlassStyle? b, double t) {
     if (identical(a, b)) {
       return a;
     }
     final safeT = t.isNaN ? 0.0 : t;
+    final shadowT = safeT.clamp(0.0, 1.0);
     final from = a ?? b!.copyWith(tintOpacity: 0, borderOpacity: 0, blurSigma: 0, shadows: const []);
     final to = b ?? a!.copyWith(tintOpacity: 0, borderOpacity: 0, blurSigma: 0, shadows: const []);
     double mix(double x, double y) => lerpDouble(x, y, safeT)!;
@@ -194,7 +198,7 @@ class GlassStyle with Diagnosticable {
       borderWidth: mix(from.borderWidth, to.borderWidth),
       rimColor: Color.lerp(from.rimColor, to.rimColor, safeT)!,
       borderOpacity: mix(from.borderOpacity, to.borderOpacity),
-      shadows: BoxShadow.lerpList(from.shadows, to.shadows, safeT) ?? const [],
+      shadows: BoxShadow.lerpList(from.shadows, to.shadows, shadowT) ?? const [],
     );
   }
 
